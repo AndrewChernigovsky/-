@@ -22,7 +22,9 @@ exports.pug2htmlProd = tasksProd.pug2htmlProd;
 // html to formatter html
 exports.htmlProd = tasksProd.htmlProd;
 // scss to css
-exports.scssProd = tasks.scssProd;
+exports.scssProd = tasksProd.scssProd;
+
+exports.cssConcatProd = tasksProd.cssConcatProd;
 
 // ВЫЗОВ ГАЛПА
 
@@ -33,5 +35,6 @@ exports.default = gulp.series(exports.pug2html, exports.html, exports.scss);
 exports.prod = gulp.series(
 	exports.pug2htmlProd,
 	exports.htmlProd,
-	exports.scssProd
+	exports.scssProd,
+	exports.cssConcatProd
 );

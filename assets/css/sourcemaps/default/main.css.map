@@ -1,0 +1,1 @@
+{"version":3,"sources":["default/main.scss","default/main.css"],"names":[],"mappings":"AAAA;EACC,mBAAA;ACCD","file":"../../default/main.css","sourcesContent":["body {\r\n\tborder-color: black;\r\n}","body {\n  border-color: black;\n}"]}
