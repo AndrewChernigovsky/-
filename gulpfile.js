@@ -98,6 +98,10 @@ requireTask(
 exports.rastr = tasks.rastr
 // icons-svg optimize sprite in to directory=>src
 exports.svg_sprite = tasks.svg_sprite
+// watchig
+exports.watch = tasks.watch
+// browserSync
+exports.browsersync = tasks.browsersync
 
 // =>=>=>=>=>=>=>=>
 // ___________________________________________________________
@@ -136,6 +140,8 @@ exports.default = gulp.series(
   gulpConfig.task.buildStylesVendors,
   gulpConfig.task.buildCustomJs,
   gulpConfig.task.buildJsVendors,
+  exports.watch,
+  exports.browsersync,
 )
 
 // gulp production
