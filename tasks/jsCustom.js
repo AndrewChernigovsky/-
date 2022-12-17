@@ -1,13 +1,33 @@
-const { src, dest } = require('gulp');
-const uglify = require;
-'gulp-uglify-es'.default;
-const concat = require('gulp-concat');
-const map = require('gulp-sourcemaps');
+'use strict'
 
-module.exports = function jsCustom() {
-	return src(['src/js/**/*.js', '!src/js/vendors.js'])
-		.pipe(map.init())
-		.pipe(concat('app.min.js'))
-		.pipe(map.write(''))
-		.pipe(dest('assets/js/'));
-};
+const map = require('gulp-sourcemaps')
+const uglify = require('gulp-uglify-es').default
+const gulp = require('gulp')
+const notify = require('gulp-notify')
+const browserify = require('browserify')
+const source = require('vinyl-source-stream')
+const rename = require('gulp-rename')
+
+module.exports = function (options) {
+  return function () {
+    return browserify({
+      entries: [`./${options.src}/js/${options.mainJs}`],
+    })
+      .transform('babelify', {
+        presets: ['@babel/preset-env'],
+      })
+      .bundle()
+      .on(
+        'error',
+        notify.onError({
+          title: 'JS compiling error',
+          icon: './sys_icon/error_icon.png',
+          wait: true,
+        }),
+      )
+
+      .pipe(source('app.js'))
+      .pipe(rename('app.min.js'))
+      .pipe(gulp.dest(`./${options.dest}/js`))
+  }
+}

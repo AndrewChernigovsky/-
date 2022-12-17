@@ -3,10 +3,10 @@ const concatCss = require('gulp-concat-css');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 
-module.exports = function cssConcatProd() {
-	return src('assets/css/**/*.css')
+module.exports = function cssVendorsProd() {
+	return src('src/vendors/vendors.css')
 		.pipe(autoprefixer())
-		.pipe(concatCss('styles.min.css'))
+		.pipe(concatCss('vendors.min.css'))
 		.pipe(cleanCSS({compatibility: 'ie8'}))
-		.pipe(dest('production/css/'));
+		.pipe(dest('production/vendors/'));
 };

@@ -1,0 +1,1 @@
+{"version":3,"sources":["default/main.scss","styles.css","default/buttons.scss"],"names":[],"mappings":"AAAA;EACC,mBAAA;ACCD;;ACFA;EACC,eAAA;ADKD","file":"../styles.css","sourcesContent":["body {\r\n\tborder-color: black;\r\n}","body {\n  border-color: black;\n}\n\n.btn {\n  font-size: 24px;\n}",".btn {\r\n\tfont-size: 24px;\r\n}"]}

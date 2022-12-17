@@ -1,2 +1,7 @@
-let af = 1;
-let a1f = 1;
+import menuBurger from './components/burger-menu';
+
+(($) => {
+	$(() => {
+		menuBurger.init();
+	});
+})(jQuery);
