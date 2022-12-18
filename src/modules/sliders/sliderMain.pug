@@ -1,9 +1,14 @@
 extends ../../layout/sliderlayout/sliderMain
-
-//- block swiper-slide
-//- 	div(class='swiper-slide' + classesSliders.add + '__slide')
-//- 		h1 111
-//- 	div(class='swiper-slide' + classesSliders.add + '__slide')
-//- 		h1 222
-//- 	div(class='swiper-slide' + classesSliders.add + '__slide')
-//- 		h1 333
+block variables
+	include ../../variables/variables
+block swiper
+	div(class='swiper' +  classesSliders.main)
+		block swiper-wrapper
+			div(class='swiper-wrapper' +  classesSliders.main + '__wrapper')
+				block swiper-slide
+					div(class='swiper-slide' + classesSliders.main + '__slide')
+						h1 111
+					div(class='swiper-slide' + classesSliders.main + '__slide')
+						h1 222
+					div(class='swiper-slide' + classesSliders.main + '__slide')
+						h1 333

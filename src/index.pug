@@ -1,9 +1,17 @@
-include variables/variables
+extends layout/pages/index-Layout
 
-html(lang="en")
-	include partials/head/head
-	body
-		include components/bem-blocks/_header
-		h1 Hello, World!
-		a(href="develop-page.html") develop3
-	include partials/scripts/scripts
+block variables 
+	include variables/variables
+block doctype
+	html(lang="en")
+		include partials/head/head
+		block body 
+			body
+				block header 
+					include components/bem-blocks/_header
+				block main
+					include components/page-blocks/_main/_main
+					h1 Hello, World!
+					a(href="develop-page.html") develop3
+				block footer 
+					include partials/scripts/scripts
