@@ -1,2 +1,16 @@
 extends ../../layout/sliderlayout/sliderMain
+//- include ../../layout/sliderlayout/sliderMain
+//- // -	let add = 'swiper-main'
+
+block swiper
+	div(class='swiper' + add)
+		block swiper-wrapper
+			div(class='swiper-wrapper' + add + '__wrapper')
+				block swiper-slide
+					div(class='swiper-slide' + add + '__slide')
+						h1 1
+					div(class='swiper-slide' + add + '__slide')
+						h1 2
+					div(class='swiper-slide' + add + '__slide')
+						h1 3
 

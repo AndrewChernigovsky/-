@@ -1,13 +1,13 @@
 block swiper
-	.swiper.swiper-main
+	div(class='swiper' + add.add)
 		block swiper-wrapper
-			.swiper-wrapper
+			div(class='swiper-wrapper' + add.add + '__wrapper')
 				block swiper-slide
-					.swiper-slide
+					div(class='swiper-slide' + add.add + '__slide')
 						h1 1
-					.swiper-slide
+					div(class='swiper-slide' + add.add + '__slide')
 						h1 2
-					.swiper-slide
+					div(class='swiper-slide' + add.add + '__slide')
 						h1 3
 		block swiper-pagination
 			.swiper-pagination
@@ -17,5 +17,3 @@ block swiper
 			.swiper-button-next
 		block swiper-scrollbar
 			.swiper-scrollbar
-
-
