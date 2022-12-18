@@ -2,7 +2,7 @@ extends layout/pages/index-Layout
 
 block variables 
 	include variables/variables
-block doctype
+block html
 	html(lang="en")
 		include partials/head/head
 		block body 
@@ -11,7 +11,5 @@ block doctype
 					include components/bem-blocks/_header
 				block main
 					include components/page-blocks/_main/_main
-					h1 Hello, World!
-					a(href="develop-page.html") develop3
 				block footer 
 					include partials/scripts/scripts

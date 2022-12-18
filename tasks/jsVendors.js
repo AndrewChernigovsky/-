@@ -31,8 +31,8 @@ module.exports = function (options) {
   return (done) => {
     const jsVendors = require(`../${options.src}/vendors/${options.vendorJs}`);
     const noneES5 = jsVendors.es5.length === 0 ? true : false;
-    const noneES6 = jsVendors.es6.length === 0 ? true : false;
-
+	const noneES6 = jsVendors.es6.length === 0 ? true : false;
+	  
     if (noneES5 && noneES6) {
       return done();
     } else if (noneES6) {

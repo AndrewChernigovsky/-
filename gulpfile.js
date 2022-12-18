@@ -29,6 +29,36 @@ function requireTask(taskName, path, options, dependencies) {
   }
 }
 
+
+
+
+
+
+// var imageResize = require('gulp-image-resize');
+// var rename = require("gulp-rename");
+
+// var resizeImageTasks = [];
+
+// [100,300,800,1000,2000].forEach(function(size) {
+//   var resizeImageTask = 'resize_' + size;
+//   gulp.task(resizeImageTask, function() {
+//     return gulp.src('src/images/**/*.{jpg,png,tiff}')
+//       .pipe(imageResize({
+//          width:  size,
+//          height: size,
+//          upscale: false
+//        }))
+//       .pipe(gulp.dest('src/images/' + size + '/'))
+//   });
+//   resizeImageTasks.push(resizeImageTask);
+// });
+	
+// gulp.task('resize_images', resizeImageTasks)
+
+// exports.resize_images = crop;
+
+
+
 // DEFAULT (directory=>assets)
 
 // clean asstes
@@ -63,9 +93,7 @@ requireTask(
   },
 )
 
-// exports.jsCustom = tasks.jsCustom;
 // vendors.js in to directory=>assets/vendors
-// exports.jsVendors = tasks.jsVendors;
 
 requireTask(
   `${gulpConfig.task.buildJsVendors}`,
@@ -81,8 +109,6 @@ requireTask(
 
 // vendors.css in to directory=>assets/vendors
 
-// exports.cssVendors = tasks.cssVendors
-
 requireTask(
   `${gulpConfig.task.buildStylesVendors}`,
   `./${gulpConfig.folder.tasks}/`,
@@ -96,8 +122,16 @@ requireTask(
 )
 // images optimize in to directory=>assets/images
 exports.rastr = tasks.rastr
+// images optimize in to directory=>assets/images
+exports.webp = tasks.webp
+// images optimize in to directory=>assets/images
+exports.crop = tasks.crop
 // icons-svg optimize sprite in to directory=>src
 exports.svg_sprite = tasks.svg_sprite
+// php
+exports.php = tasks.php;
+// copy php
+exports.copyPHP = tasks.copyPHP;
 // watchig
 exports.watch = tasks.watch
 // browserSync
@@ -127,11 +161,16 @@ exports.jsVendorsProd = tasksProd.jsVendorsProd
 // .php to directory=>productiion
 exports.php = tasksProd.php
 
+
 // ВЫЗОВ ГАЛПА
 
 // gulp
 exports.default = gulp.series(
   exports.del,
+   exports.svg_sprite,
+   exports.webp,
+   exports.rastr,
+   exports.crop,
   exports.copy,
   exports.pug2html,
   exports.html,
@@ -139,7 +178,8 @@ exports.default = gulp.series(
   exports.cssConcat,
   gulpConfig.task.buildStylesVendors,
   gulpConfig.task.buildCustomJs,
-  gulpConfig.task.buildJsVendors,
+ gulpConfig.task.buildJsVendors,
+  	exports.php,
   exports.watch,
   exports.browsersync,
 )
@@ -160,3 +200,4 @@ exports.prod = gulp.series(
 
 // webp
 exports.webp = gulp.series(exports.rastr, exports.svg_sprite)
+exports.img = gulp.series(exports.crop)
