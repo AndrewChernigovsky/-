@@ -29,11 +29,6 @@ function requireTask(taskName, path, options, dependencies) {
   }
 }
 
-
-
-
-
-
 // var imageResize = require('gulp-image-resize');
 // var rename = require("gulp-rename");
 
@@ -52,12 +47,10 @@ function requireTask(taskName, path, options, dependencies) {
 //   });
 //   resizeImageTasks.push(resizeImageTask);
 // });
-	
+
 // gulp.task('resize_images', resizeImageTasks)
 
 // exports.resize_images = crop;
-
-
 
 // DEFAULT (directory=>assets)
 
@@ -125,13 +118,13 @@ exports.rastr = tasks.rastr
 // images optimize in to directory=>assets/images
 exports.webp = tasks.webp
 // images optimize in to directory=>assets/images
-exports.crop = tasks.crop
+// exports.crop =  tasks.crop
 // icons-svg optimize sprite in to directory=>src
 exports.svg_sprite = tasks.svg_sprite
 // php
-exports.php = tasks.php;
+exports.php = tasks.php
 // copy php
-exports.copyPHP = tasks.copyPHP;
+exports.copyPHP = tasks.copyPHP
 // watchig
 exports.watch = tasks.watch
 // browserSync
@@ -161,25 +154,27 @@ exports.jsVendorsProd = tasksProd.jsVendorsProd
 // .php to directory=>productiion
 exports.php = tasksProd.php
 
-
 // ВЫЗОВ ГАЛПА
 
 // gulp
 exports.default = gulp.series(
   exports.del,
-   exports.svg_sprite,
-   exports.webp,
-   exports.rastr,
-   exports.crop,
-  exports.copy,
+  gulp.parallel(
+    exports.svg_sprite,
+    exports.webp,
+    exports.rastr,
+    exports.copy,
+    exports.php,
+  ),
   exports.pug2html,
   exports.html,
   exports.scss,
   exports.cssConcat,
-  gulpConfig.task.buildStylesVendors,
+  gulp.parallel(
+    gulpConfig.task.buildStylesVendors,
+    gulpConfig.task.buildJsVendors,
+  ),
   gulpConfig.task.buildCustomJs,
- gulpConfig.task.buildJsVendors,
-  	exports.php,
   exports.watch,
   exports.browsersync,
 )
@@ -200,4 +195,4 @@ exports.prod = gulp.series(
 
 // webp
 exports.webp = gulp.series(exports.rastr, exports.svg_sprite)
-exports.img = gulp.series(exports.crop)
+// exports.img = gulp.series(exports.crop)

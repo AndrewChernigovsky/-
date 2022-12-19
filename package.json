@@ -63,6 +63,7 @@
     "imagemin-jpeg-recompress": "^7.0.0",
     "imagemin-pngquant": "^9.0.2",
     "inputmask": "^5.0.7",
+    "jquery": "^3.6.2",
     "normalize.css": "^8.0.1",
     "os": "^0.1.2",
     "require-dir": "^1.2.0",

@@ -1,4 +1,4 @@
-const swiperOffer = (() => {
+const swiperMain = (() => {
   const accountantInit = new Swiper('.swiper-main', {
     slidesPerView: 1,
     spaceBetween: 20,
