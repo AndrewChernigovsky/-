@@ -51,7 +51,7 @@ module.exports = function crop() {
     im.resize({
 		srcPath:'src/images/content/money.png',
 		dstPath: 'src/images/content/money-small.png',
-		width:   256
+		width:   256,
 	})
 	// );
 	
